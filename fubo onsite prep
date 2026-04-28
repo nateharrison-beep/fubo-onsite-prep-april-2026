@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FuboTV Onsite Prep — April 30, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #f5f5f3;
+    padding: 32px 24px;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 0 0 0.5px rgba(0,0,0,0.06);
+  }
+
+  /* ── Header ── */
+  .header {
+    background: #001A4F;
+    padding: 28px 36px 24px;
+    color: #fff;
+  }
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .header-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+  .header-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .header-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+  .header-tag {
+    background: #E46962;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+  .attendees {
+    display: flex;
+    gap: 12px;
+  }
+  .attendee {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .attendee-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .avatar-amplitude { background: #E46962; color: #fff; }
+  .avatar-fubo { background: rgba(255,255,255,0.2); color: #fff; }
+  .attendee-name { font-size: 13px; font-weight: 500; color: #fff; }
+  .attendee-role { font-size: 11px; color: rgba(255,255,255,0.55); }
+  .divider-dot {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    align-self: center;
+    padding-top: 2px;
+  }
+
+  /* ── Stats bar ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-bottom: 0.5px solid #e8e8e5;
+  }
+  .stat {
+    padding: 14px 20px;
+    border-right: 0.5px solid #e8e8e5;
+  }
+  .stat:last-child { border-right: none; }
+  .stat-label {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #999;
+    margin-bottom: 3px;
+  }
+  .stat-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #001A4F;
+    line-height: 1.2;
+  }
+  .stat-sub {
+    font-size: 10px;
+    color: #999;
+    margin-top: 1px;
+  }
+
+  /* ── Body ── */
+  .body {
+    padding: 28px 36px;
+  }
+
+  /* ── Section heading ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #E46962;
+    margin-bottom: 12px;
+  }
+
+  /* ── Two-col layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  /* ── Content card ── */
+  .card {
+    background: #fafaf8;
+    border: 0.5px solid #e8e8e5;
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #001A4F;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid #e8e8e5;
+  }
+
+  /* ── Info rows ── */
+  .info-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .info-row:last-child { margin-bottom: 0; }
+  .info-bullet {
+    color: #E46962;
+    font-size: 16px;
+    line-height: 1.2;
+    flex-shrink: 0;
+    margin-top: -1px;
+  }
+  .info-text { color: #333; }
+  .info-label {
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+
+  /* ── Sub-section within card ── */
+  .subsection {
+    margin-bottom: 14px;
+  }
+  .subsection:last-child { margin-bottom: 0; }
+  .subsection-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+    margin-bottom: 6px;
+  }
+
+  /* ── Highlight chip ── */
+  .chip {
+    display: inline-block;
+    background: #EEF3FB;
+    color: #1A4FA0;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin: 2px 3px 2px 0;
+  }
+  .chip-green {
+    background: #EAF5EE;
+    color: #1A7A3C;
+  }
+  .chip-coral {
+    background: #FEF0EF;
+    color: #B84040;
+  }
+
+  /* ── Bio section ── */
+  .bio-section {
+    background: #fafaf8;
+    border: 0.5px solid #e8e8e5;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+  }
+  .bio-header {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid #e8e8e5;
+  }
+  .bio-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #001A4F;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .bio-name { font-size: 15px; font-weight: 600; color: #001A4F; }
+  .bio-role { font-size: 12px; color: #666; margin-top: 2px; }
+  .bio-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .bio-item {
+    font-size: 12.5px;
+    color: #333;
+    line-height: 1.5;
+  }
+  .bio-item strong { color: #1a1a1a; font-weight: 500; }
+
+  /* ── Objectives ── */
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .objective-card {
+    border: 0.5px solid #e8e8e5;
+    border-radius: 10px;
+    padding: 16px 18px;
+    background: #fff;
+    border-top: 2px solid #001A4F;
+  }
+  .obj-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #E46962;
+    margin-bottom: 8px;
+  }
+  .obj-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #001A4F;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .obj-body { font-size: 12px; color: #555; line-height: 1.6; }
+
+  /* ── Divider ── */
+  .section-divider {
+    height: 0.5px;
+    background: #e8e8e5;
+    margin: 24px 0;
+  }
+
+  /* ── Blockers row ── */
+  .blockers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .blocker-item {
+    background: #FEFAF8;
+    border: 0.5px solid #F0D5CC;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .blocker-title {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #8B3A2A;
+    margin-bottom: 4px;
+  }
+  .blocker-body { font-size: 11.5px; color: #666; line-height: 1.5; }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 12px 36px;
+    border-top: 0.5px solid #e8e8e5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-left { font-size: 11px; color: #aaa; }
+  .footer-right { font-size: 11px; color: #aaa; }
+  .footer-amp {
+    font-size: 12px;
+    font-weight: 600;
+    color: #001A4F;
+    letter-spacing: -0.02em;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="header-label">Executive meeting prep</div>
+        <div class="header-title">FuboTV Onsite</div>
+        <div class="header-meta">Thursday, April 30 · 3:00pm ET · Fubo HQ, 1290 Avenue of the Americas (b/w 51st &amp; 52nd St)</div>
+      </div>
+      <div class="header-tag">Confidential</div>
+    </div>
+    <div class="attendees">
+      <div class="attendee">
+        <div class="attendee-avatar avatar-amplitude">SS</div>
+        <div>
+          <div class="attendee-name">Spenser Skates</div>
+          <div class="attendee-role">CEO, Amplitude</div>
+        </div>
+      </div>
+      <div class="divider-dot">×</div>
+      <div class="attendee">
+        <div class="attendee-avatar avatar-fubo">AH</div>
+        <div>
+          <div class="attendee-name">Alberto Horihuela</div>
+          <div class="attendee-role">COO &amp; Co-Founder, FuboTV</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-label">Total ARR</div>
+      <div class="stat-value">~$1M</div>
+      <div class="stat-sub">Fubo core + Molotov</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Monthly active users</div>
+      <div class="stat-value">200</div>
+      <div class="stat-sub">50–75 DAU</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Events/month</div>
+      <div class="stat-value">55B</div>
+      <div class="stat-sub">Healthy usage signal</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Renewal date</div>
+      <div class="stat-value">Sep 30</div>
+      <div class="stat-sub">2026 · ~5 months</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">NPS (Dec 2025)</div>
+      <div class="stat-value">9/10</div>
+      <div class="stat-sub">Cristina Arango</div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+
+    <!-- Row 1: Company context + Amplitude footprint -->
+    <div class="two-col">
+
+      <!-- FuboTV today -->
+      <div class="card">
+        <div class="card-title">FuboTV today</div>
+
+        <div class="subsection">
+          <div class="subsection-title">Scale after merger</div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text">Completed business combination with Disney's Hulu + Live TV on Oct 29, 2025. Disney now owns ~70% of the combined entity.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text"><span class="info-label">6th-largest pay TV provider</span> in the U.S. — ~6M North America subscribers, $1.68B pro-forma NA revenue (+6% YoY).</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-title">Profitability mandate</div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text">Targeting <span class="info-label">$80–100M Adj. EBITDA in FY26</span> and $300M+ by FY28 (~80%+ EBITDA CAGR). FCF-positive by FY27–28.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text">Board-level mandate: grow margin via content cost efficiencies, higher ARPU, and better ad yield.</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-title">Strategic priorities</div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text"><span class="info-label">Integration:</span> unifying product analytics, event taxonomy, and growth funnels across two data models and toolsets.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text"><span class="info-label">Sports-first:</span> ESPN distribution, Disney ad stack to improve CPMs, fill rates, and ad yield.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text"><span class="info-label">International:</span> Molotov + skinny bundles, standalone packages, PPV, Fubo-as-a-service.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amplitude footprint -->
+      <div class="card">
+        <div class="card-title">Amplitude footprint</div>
+
+        <div class="subsection">
+          <div class="subsection-title">Commercial</div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text"><span class="info-label">$900K Fubo core</span> + $116K Molotov (FR) ≈ $1M total ARR. 2-year deal renewed 2024.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text"><span class="info-label">Products:</span> Enterprise Analytics + Session Replay (Fubo); Basic Analytics + Activation (Molotov).</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-title">Live use cases &amp; north star</div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text">Trial funnel (landing → trial → conversion) · Retention to 7-month profitability milestone · Content engagement · DVR/upsell experiments.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text"><span class="info-label">North Star KPI:</span> users reaching 7-month retention — the point where acquisition cost is recouped.</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-title">AI momentum (strong signal)</div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text">Feb 2026 onsite AI workshop with ~15 cross-functional stakeholders. Alberto is executive AI champion.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text">Mar taxonomy audit: <span class="info-label">negative AI feedback ↓59%</span>, session volume ↑57%, zero hallucination errors. 18 active users / 4 agents.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-bullet">·</span>
+            <span class="info-text">Cristina emailed President Thomas post-onsite with 3 internal commitments — strong exec engagement.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Open blockers -->
+    <div style="margin-bottom: 24px;">
+      <div class="section-label">Current blockers to address</div>
+      <div class="blockers">
+        <div class="blocker-item">
+          <div class="blocker-title">Session Replay on CTV</div>
+          <div class="blocker-body">95% of viewership is Roku; SR doesn't support Roku today. Samsung test in motion but not broad. SR disappointment is a real risk signal.</div>
+        </div>
+        <div class="blocker-item">
+          <div class="blocker-title">Taxonomy &amp; AI governance</div>
+          <div class="blocker-body">Legacy events still fire alongside renamed events. One prior AI incident with wrong events in exec charts has created governance concerns for Bryan's team.</div>
+        </div>
+        <div class="blocker-item">
+          <div class="blocker-title">Revenue data outside Amplitude</div>
+          <div class="blocker-body">ARPU/LTV data lives in BigQuery + Tableau. Appetite to import after billing cleanup. LaunchDarkly handles flags (~$20K/yr) — experimentation whitespace.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alberto bio -->
+    <div class="section-label">Who you're meeting</div>
+    <div class="bio-section">
+      <div class="bio-header">
+        <div class="bio-avatar">AH</div>
+        <div>
+          <div class="bio-name">Alberto Horihuela</div>
+          <div class="bio-role">Co-Founder &amp; COO, FuboTV Inc. · Executive sponsor &amp; economic buyer for Amplitude</div>
+          <div class="bio-tags">
+            <span class="chip">AI champion</span>
+            <span class="chip">Economic buyer</span>
+            <span class="chip">Serial entrepreneur</span>
+            <span class="chip">Performance marketing expert</span>
+          </div>
+        </div>
+      </div>
+      <div class="bio-grid">
+        <div class="bio-item"><strong>Background:</strong> Previously CMO (2015–21) and CGO (2021–23) at FuboTV. Founded Primerad Network (Hispanic video ad network) and Dokarta. Early career at Morgan Stanley.</div>
+        <div class="bio-item"><strong>How he shows up:</strong> Strongly pro-AI; wants AI/analytics to democratize insights (Conversion, Retention, Viewership agents) with governance guardrails. Vocal about preventing hallucination risk.</div>
+        <div class="bio-item"><strong>Education:</strong> BA Economics, University of Chicago (2009). Trilingual: English, Spanish, Portuguese.</div>
+        <div class="bio-item"><strong>Relationship context:</strong> Previously deeply engaged at exec level with Thomas. Relationship has partially shifted to VP level — this visit is an opportunity to re-elevate the Amplitude exec relationship.</div>
+      </div>
+    </div>
+
+    <!-- Objectives -->
+    <div class="section-label">Meeting objectives — what to walk out with</div>
+    <div class="objectives-grid">
+      <div class="objective-card">
+        <div class="obj-badge">Primary · 01</div>
+        <div class="obj-title">Re-anchor as strategic partner</div>
+        <div class="obj-body">Align Alberto on Amplitude as the unified behavioral analytics and experimentation standard for the combined Fubo + Hulu + Live TV platform — directly tied to the EBITDA and FCF roadmap he owns.</div>
+      </div>
+      <div class="objective-card">
+        <div class="obj-badge">Primary · 02</div>
+        <div class="obj-title">Secure AI pilot sponsorship</div>
+        <div class="obj-body">Get COO-level commitment for a 60–90 day structured AI agent pilot (Conversion, Retention, Viewership) with success metrics tied to trial conversion and 7-month retention — before Sept renewal.</div>
+      </div>
+      <div class="objective-card">
+        <div class="obj-badge">Primary · 03</div>
+        <div class="obj-title">Open Hulu + Live TV expansion</div>
+        <div class="obj-body">Identify who owns analytics and experimentation on the Hulu + Live TV side. Secure Alberto's support for a multi-party scoping session to quantify the combined addressable footprint.</div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Secondary objectives row -->
+    <div class="section-label">Secondary objectives</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Confirm renewal success criteria</div>
+        <div class="info-row">
+          <span class="info-bullet">·</span>
+          <span class="info-text">Have Alberto articulate what success looks like at renewal for him, Cristina, and Bryan — product scope (experimentation, Guides &amp; Surveys, AI features), commercial guardrails, proof points for Disney/board.</span>
+        </div>
+        <div class="info-row">
+          <span class="info-bullet">·</span>
+          <span class="info-text">Address the SR/CTV gap directly — secure buy-in for an interim telemetry plan so SR disappointment doesn't dominate the relationship narrative.</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Re-establish exec cadence</div>
+        <div class="info-row">
+          <span class="info-bullet">·</span>
+          <span class="info-text">Agree on a semi-annual EBR cadence with Spenser / Thomas / Brian tied to Fubo's integration, AI, and profitability milestones.</span>
+        </div>
+        <div class="info-row">
+          <span class="info-bullet">·</span>
+          <span class="info-text">Avoid previous pattern: CSM/AE coverage gaps driving risk. Durable C-level touchpoint protects against org changes on both sides.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">Prepared for Spenser Skates · April 28, 2026 · Confidential</div>
+    <div class="footer-right"><span class="footer-amp">Amplitude</span></div>
+  </div>
+
+</div>
+</body>
+</html>
